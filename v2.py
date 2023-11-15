@@ -18,6 +18,8 @@ import joblib
 
 #TODO: change uuid
 uuid = "UUID"
+#TODO: set image freq (in seconds)
+image_freq = 30
 
 # In[1]: data transfer
 
@@ -126,7 +128,7 @@ def send_image():
         #file_path = 'G:\\pysource-vehcount\\source code\\image_cache'
         file_name = '/home/luyang/program/aiwaysion_must/image_cache/' + current_hour + '.jpg'
         file_path = '/home/luyang/program/aiwaysion_must/image_cache/'
-        if time.time() - time_send_image > 30:
+        if time.time() - time_send_image > image_freq:
 
             for f in os.listdir(file_path):
                 os.remove(os.path.join(file_path, f))
@@ -174,12 +176,12 @@ delay = 20 #FPS on video
 
 detect = []
 counts = 0
-RF = joblib.load('RF_model_02092023.sav')
+RF = joblib.load('/home/luyang/program/aiwaysion_must/RF_model_02092023.sav')
 
 # In[5]: temp file dir.
 
 #path ='G:\\pysource-vehcount\\source code'
-path ='/home/luyang/program/System'
+path ='/home/luyang/program/aiwaysion_must/'
 if not os.path.exists(os.path.join(path, 'image_cache')):
     os.mkdir(os.path.join(path, 'image_cache'))
 
@@ -272,7 +274,6 @@ if __name__ == '__main__':
                 up_count, down_count = last_line[0].split()[-1], last_line[1].split()[-1]
             '''
             # API/udp send str
-            #TODO: change device_id
             device_id = uuid 
             now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
             y_pre = RF.predict([[temperature, humidity, m_g, v_g, m_d, v_d]])
