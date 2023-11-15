@@ -14,10 +14,7 @@ This repository contains the MUST device algorithms, including the following alg
 The MUST device algorithms are developed in Python 3.7.3. The following packages are required:
 
 - pip3 install -U scikit-learn scipy
-- pip3 install joblib
-- pip3 install mysql-connector
-- pip3 install boto3
-- pip3 install requests-html
+- pip3 install joblib mysql-connector boto3 requests-html
 
 ## 3. Usage
 
