@@ -19,7 +19,7 @@ import joblib
 #TODO: change uuid
 uuid = "UUID"
 #TODO: set image freq (in seconds)
-image_freq = 30
+image_freq = 60
 
 # In[1]: data transfer
 
